@@ -1,14 +1,22 @@
 package com.romvo.agenda.adapter.in.rest.dto;
 
-import com.romvo.agenda.domain.entity.ProductoBancario;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-public record ContactoDTO (
-    Long id,
-    String nombreContacto,
-    String numeroIdentificacion,
-    String correoElectronico,
-    List<ProductoBancario> productoBancarios
-){
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class ContactoDTO {
+    private Long id;
+    private String nombreContacto;
+    private String numeroIdentificacion;
+    private String numeroTelefonico;
+    private String correoElectronico;
+    private List<ProductoBancarioDTO> productoBancarios;
 }

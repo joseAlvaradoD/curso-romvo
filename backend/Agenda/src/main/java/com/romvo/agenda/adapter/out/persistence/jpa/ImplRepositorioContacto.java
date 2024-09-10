@@ -1,5 +1,6 @@
 package com.romvo.agenda.adapter.out.persistence.jpa;
 
+import com.romvo.agenda.adapter.out.persistence.jpa.entity.ContactoEntity;
 import com.romvo.agenda.adapter.out.persistence.jpa.mapper.ContactoEntityMapper;
 import com.romvo.agenda.domain.entity.Contacto;
 import com.romvo.agenda.port.out.persistence.RepositorioContacto;
@@ -40,6 +41,8 @@ public class ImplRepositorioContacto implements RepositorioContacto {
 
     @Override
     public List<Contacto> listar() {
+        List<ContactoEntity> list =  h2RepositorioContacto.findAll();
+        Contacto c = contactoEntityMapper.contactoEntityToContacto(list.getFirst());
         return h2RepositorioContacto
                 .findAll()
                 .stream()

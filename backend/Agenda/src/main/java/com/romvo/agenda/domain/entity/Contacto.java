@@ -13,6 +13,7 @@ import java.util.List;
 @Builder
 public class Contacto {
 
+    private Long id;
     private String nombreContacto;
     private String numeroIdentificacion;
     private String numeroTelefonico;

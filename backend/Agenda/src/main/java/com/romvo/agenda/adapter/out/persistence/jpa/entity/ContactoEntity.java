@@ -18,7 +18,7 @@ import java.util.List;
 public class ContactoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column
     private String nombreContacto;
@@ -29,7 +29,7 @@ public class ContactoEntity {
     @Column
     private String correoElectronico;
 
-    @OneToMany(mappedBy = "contacto")
+    @OneToMany(mappedBy = "contacto", cascade = CascadeType.ALL)
     private List<ProductoBancarioEntity> productoBancarios;
 
 

@@ -5,7 +5,7 @@ import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 
 @Component
-@Mapper
+@Mapper(uses = ProductoBancarioDTOMapper.class)
 public interface ContactoDTOMapper {
     ContactoDTO contactoToContactoDTO(Contacto contacto);
 }
