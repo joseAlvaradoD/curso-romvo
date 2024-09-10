@@ -1,6 +1,5 @@
 package com.romvo.agenda.adapter.out.persistence.jpa.entity;
 
-import com.romvo.agenda.domain.entity.Contacto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +16,7 @@ public class ProductoBancarioEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private Contacto contacto;
+    private ContactoEntity contacto;
     @Column
     private String nombreProducto;
 }
