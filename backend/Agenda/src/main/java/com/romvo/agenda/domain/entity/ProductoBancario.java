@@ -1,17 +1,16 @@
 package com.romvo.agenda.domain.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class ProductoBancario {
+
     private String nombreProducto;
 
-    public ProductoBancario(String nombreProducto) {
-        this.nombreProducto = nombreProducto;
-    }
-
-    public String getNombreProducto() {
-        return nombreProducto;
-    }
-
-    public void setNombreProducto(String nombreProducto) {
-        this.nombreProducto = nombreProducto;
-    }
 }

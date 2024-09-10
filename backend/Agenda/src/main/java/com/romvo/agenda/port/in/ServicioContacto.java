@@ -9,5 +9,5 @@ public interface ServicioContacto{
     Contacto crear(Contacto contacto);
     Contacto editar(Contacto contacto);
     void eliminar(Object id);
-    List<Contacto> listar(Contacto contacto);
+    List<Contacto> listar();
 }
