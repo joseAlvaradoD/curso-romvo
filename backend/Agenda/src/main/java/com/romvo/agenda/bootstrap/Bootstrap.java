@@ -18,14 +18,19 @@ public class Bootstrap implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        List<ProductoBancarioEntity> productoBancarioList = new ArrayList<>();
-        productoBancarioList.add(ProductoBancarioEntity.builder().nombreProducto("Tarjeta").build());
-        h2RepositorioContacto.save(ContactoEntity.builder()
+
+        ContactoEntity ce = h2RepositorioContacto.save(ContactoEntity.builder()
                 .nombreContacto("jose")
                 .numeroIdentificacion("111111")
                 .numeroTelefonico("1245679")
                 .correoElectronico("jose@mail.com")
-                .productoBancarios(productoBancarioList)
                 .build());
+
+        List<ProductoBancarioEntity> productoBancarioList = new ArrayList<>();
+        productoBancarioList.add(ProductoBancarioEntity.builder().contacto(ce).nombreProducto("Tarjeta").build());
+        ce.setProductoBancarios(productoBancarioList);
+
+        h2RepositorioContacto.save(ce);
+
     }
 }
