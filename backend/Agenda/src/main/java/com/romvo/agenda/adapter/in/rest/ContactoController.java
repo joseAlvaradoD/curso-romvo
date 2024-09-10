@@ -1,6 +1,7 @@
 package com.romvo.agenda.adapter.in.rest;
 
 import com.romvo.agenda.adapter.in.rest.dto.ContactoDTO;
+import com.romvo.agenda.adapter.in.rest.dto.ContactoDTOMapper;
 import com.romvo.agenda.port.in.ServicioContacto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,10 +18,15 @@ import java.util.List;
 public class ContactoController {
 
     private final ServicioContacto servicioContacto;
+    private final ContactoDTOMapper contactoDTOMapper;
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<ContactoDTO> listarContactos(){
-        return null;
+        return this.servicioContacto
+            .listar()
+            .stream()
+            .map(contactoDTOMapper::contactoToContactoDTO)
+            .toList();
     }
 }
