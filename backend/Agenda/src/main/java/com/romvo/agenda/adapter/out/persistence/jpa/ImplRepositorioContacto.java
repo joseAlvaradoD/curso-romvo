@@ -18,19 +18,19 @@ public class ImplRepositorioContacto implements RepositorioContacto {
 
     @Override
     public Contacto crear(Contacto contacto) {
+        ContactoEntity ce = contactoEntityMapper.contactoToContactoEntity(contacto);
+        ce.getProductoBancarios().forEach(pb -> pb.setContacto(ce));
         return contactoEntityMapper.contactoEntityToContacto(
-            h2RepositorioContacto.save(
-                contactoEntityMapper.contactoToContactoEntity(contacto)
-            )
+            h2RepositorioContacto.save(ce)
         );
     }
 
     @Override
     public Contacto editar(Contacto contacto) {
+        ContactoEntity ce = contactoEntityMapper.contactoToContactoEntity(contacto);
+        ce.getProductoBancarios().forEach(pb -> pb.setContacto(ce));
         return contactoEntityMapper.contactoEntityToContacto(
-            h2RepositorioContacto.save(
-                contactoEntityMapper.contactoToContactoEntity(contacto)
-            )
+            h2RepositorioContacto.save(ce)
         );
     }
 
@@ -41,8 +41,6 @@ public class ImplRepositorioContacto implements RepositorioContacto {
 
     @Override
     public List<Contacto> listar() {
-        List<ContactoEntity> list =  h2RepositorioContacto.findAll();
-        Contacto c = contactoEntityMapper.contactoEntityToContacto(list.getFirst());
         return h2RepositorioContacto
                 .findAll()
                 .stream()
