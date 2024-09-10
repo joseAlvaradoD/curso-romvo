@@ -18,6 +18,11 @@ public class ImplServicioContacto implements ServicioContacto {
     }
 
     @Override
+    public Contacto findById(Long id) {
+        return null;
+    }
+
+    @Override
     public Contacto crear(Contacto contacto) {
         return this.repositorioContacto.crear(contacto);
     }
@@ -28,8 +33,8 @@ public class ImplServicioContacto implements ServicioContacto {
     }
 
     @Override
-    public void eliminar(Object id) {
-        this.eliminar(id);
+    public void eliminar(Long id) {
+        this.repositorioContacto.eliminar(id);
     }
 
     @Override
